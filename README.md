@@ -62,3 +62,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+## Notes
+1. Run command below
+    php artisan make:migration create_admins_table
+    - to create migration file of create admins table
+
+    php artisan migrate --path=/database/migrations/2025_02_25_011844_create_admins_table.php
+    - to deploy the migration file to the database
+
+2. Add the code inside the 
+    use Illuminate\Support\Facades\Schema;
+    - in global
+    Schema::defaultStringLength(191);
+    - in boot()
+3. php artisan make:controller UserController
+4. php artisan make:component Header
