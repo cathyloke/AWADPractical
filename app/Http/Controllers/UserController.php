@@ -56,4 +56,14 @@ class UserController extends Controller
         $data -> update($req->all());
         return redirect('index');
     }
+
+    function testData() {
+        $data = User::all();
+        
+        return view('datatest', ['users'=>$data]);
+        
+        // return User::all();                             //use the model to retrieve all the data from database
+        // return DB::select("select * from users");
+    }
+
 }

@@ -25,3 +25,5 @@ Route::post('/addUser', [UserController::class,'addUser']);
 Route::get('/deleteUser/{id}', [UserController::class,'deleteUser']);
 Route::get('/editUser/{id}', [UserController::class,'showEditUserForm']);
 Route::post('/editUser/{id}', [UserController::class,'editUser']);
+
+Route::get('/datatest', [UserController::class,'testData']);
