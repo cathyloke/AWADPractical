@@ -1,0 +1,10 @@
+//drop database 
+php artisan db:wipe
+
+
+
+
+
+
+
+
