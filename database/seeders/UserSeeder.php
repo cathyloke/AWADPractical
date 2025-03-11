@@ -22,26 +22,25 @@ class UserSeeder extends Seeder
         //     'email'=>'alice@gmail.com',
         //     'password'=>'alice',
         // ]);
-        
+
         //seed records by looping
         // for($i = 1;$i <= 10; $i++){
-            //     DB::table('users')->insert([
-                //         'name'=>Str::random(3),
-                //         'email'=>Str::random(3).'@gmail.com',
-                //         'password'=>Str::random(5),
-                //     ]);
-                // }
-                
+        //     DB::table('users')->insert([
+        //         'name'=>Str::random(3),
+        //         'email'=>Str::random(3).'@gmail.com',
+        //         'password'=>Str::random(5),
+        //     ]);
+        // }
+
         //seed records by looping using realistic name
         $faker = Faker::create();
-        for($i = 1;$i <= 10; $i++){
+        for ($i = 1; $i <= 10; $i++) {
             DB::table('users')->insert([
-                'name'=>$faker->name,
-                'email'=>$faker->userName.'@gmail.com',
-                'password'=>Str::random(5),
+                'name' => $faker->name,
+                'email' => $faker->userName . '@gmail.com',
+                'password' => Str::random(5),
+                'is_admin' => 1
             ]);
         }
-    
     }
-
 }

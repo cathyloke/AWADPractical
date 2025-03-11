@@ -1,10 +1,38 @@
 //drop database 
 php artisan db:wipe
 
+//create migration file 
+php artisan migrate --path=database/migrations/2014_10_12_000000_create_users_table.php
+
+//add into migration file
+php artisan make:migration add_columns_to_users_table --table=users
+
+//run migration file
+php artisan migrate --path=database/migrations/2025_03_11_012250_add_columns_to_users_table.php
 
 
+//add 'is_admin' into the User.php protected $fillable in the models
+
+//add code below into the UserController
+$data=$req->all();
+$data['is_admin']=0; 
 
 
+//create company table
+php artisan make:migration create_companies_table --table=companies                     ???
+
+//run migration file
+php artisan migrate --path=database/migrations/2025_03_11_014138_create_companies_table.php
 
 
+//create seeder
+php artisan make:seeder CompanySeeder
 
+php artisan db:seed --class=CompanySeeder
+
+
+//create company model
+php artisan make:model Company
+
+
+//add model, controller, route

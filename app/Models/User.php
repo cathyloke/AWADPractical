@@ -21,7 +21,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin'                      //add if any new data item added into the db structure
     ];
+
+    //add relationship
+    public function getCompany()
+    {
+        return $this->hasOne('App\Models\Company');
+    }
+
+    public function getCompanyMany()
+    {
+        return $this->hasMany('App\Models\Company');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.
