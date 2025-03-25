@@ -36,3 +36,13 @@ php artisan make:model Company
 
 
 //add model, controller, route
+
+
+
+
+//NEXT PRACTICAL Week 7
+//created the mvc of login
+
+//middleware
+php artisan make:middleware
+

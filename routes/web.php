@@ -33,3 +33,25 @@ Route::get('/datatest', [UserController::class, 'testData']);
 //add route
 Route::get('/oneToOne', [UserController::class, 'OnetoOne']);
 Route::get('/oneToMany', [UserController::class, 'OnetoMany']);
+
+
+Route::get('/login', [UserController::class, 'showLoginForm']);
+Route::post('/login', [UserController::class, 'login']);
+
+/**
+ * When using middlewareGroups
+ * 'protectedPage' => [
+ *   \App\Http\Middleware\ageCheck::class,
+ *]
+ */
+// Route::group(['middleware' => ['protectedPage']], function () {
+//     Route::get('/login', [UserController::class, 'showLoginForm']);
+// });
+
+//when using routeMiddleware
+/**
+ *  protected $routeMiddleware = [
+ *      'protectedPage' => \App\Http\Middleware\ageCheck::class,
+ *  ]
+ */
+Route::get('/login', [UserController::class, 'showLoginForm'])->middleware('protectedPage');

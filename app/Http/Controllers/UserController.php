@@ -83,4 +83,20 @@ class UserController extends Controller
         // return User::all();                             //use the model to retrieve all the data from database
         // return DB::select("select * from users");
     }
+
+
+    //next practical Week 7 Form Validation
+    function showLoginForm()
+    {
+        return view('loginForm');
+    }
+
+    function login(Request $req)
+    {
+        $req->validate([
+            'email' => 'required | email',
+            'password' => 'required | min:5'
+        ]);
+        return $req->all();
+    }
 }
