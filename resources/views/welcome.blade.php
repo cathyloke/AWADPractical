@@ -20,6 +20,19 @@
             }
         </style>
     </head>
+
+    @if(session('user'))
+    <h1>Hello {{session('user')}}, you just signed up</h1>
+    @endif
+
+    <h1>Hello {{session('user')}}</h1>
+    <a href='/aboutus'>About Us</a> 
+    <br>
+    <a href='/contactus'>Contact Us</a>
+    <br>
+    <a href='/logout'>Logout</a>
+
+
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))

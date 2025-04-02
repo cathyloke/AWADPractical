@@ -10,10 +10,10 @@
 
 <form action='login' method='post'>
     @csrf
-    <input type='text' name=email placeholder='Enter Email'>
+    <input type='text' name=name placeholder='Enter name'>
     <br>
     <span style='color:red'>
-        @error('email'){{$message}}@enderror
+        @error('name'){{$message}}@enderror
     </span>
     <br>
     <input type='text' name=password placeholder='Enter Password'>

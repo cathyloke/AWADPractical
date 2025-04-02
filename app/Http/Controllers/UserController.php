@@ -88,15 +88,73 @@ class UserController extends Controller
     //next practical Week 7 Form Validation
     function showLoginForm()
     {
+        if (session()->has('user')) {
+            return redirect('/');
+        }
         return view('loginForm');
     }
 
     function login(Request $req)
     {
         $req->validate([
-            'email' => 'required | email',
+            'name' => 'required',
             'password' => 'required | min:5'
         ]);
-        return $req->all();
+
+        // $data = $req->input();
+        // $req->session()->put('user', $data['name']);    //if using array
+
+        // 1. 
+        $req->session()->put('user', $req->name);
+        // 2.
+        // $req->session()->flash('user', $req->name);
+
+
+        return redirect('/');
+        // return $req->all();
+    }
+
+    function contactUs()
+    {
+        return view('contactus');
+    }
+    function aboutUs()
+    {
+        return view('aboutus');
+    }
+
+    function logout()
+    {
+        if (session()->has('user')) {
+            session()->pull('user');
+        }
+        return view('loginForm');
+    }
+
+    function showSignUpForm()
+    {
+        return view('signupForm');
+    }
+
+    function signup(Request $req)
+    {
+        $req->validate([
+            'name' => 'required',
+            'email' => 'required | email',
+            'password' => 'required | min: | max:12 | regex:/[a-z]/ | regex:/[A-Z]/ | regex:/[!@#$%.]/',
+            'confirm_password' => 'required | same:password'
+        ]);
+
+
+        $req->session()->put('user', $req->name);
+
+        $data = $req->all();
+        $data['is_admin'] = 0;                        //value is assigned
+
+        User::create($data);
+
+        $req->session()->flash('user', $req->name);
+
+        return redirect('/');
     }
 }

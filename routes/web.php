@@ -55,3 +55,13 @@ Route::post('/login', [UserController::class, 'login']);
  *  ]
  */
 Route::get('/login', [UserController::class, 'showLoginForm'])->middleware('protectedPage');
+
+
+Route::get('/aboutus', [UserController::class, 'aboutUs']);
+
+Route::get('/contactus', [UserController::class, 'contactUs']);
+
+Route::get('/logout', [UserController::class, 'logout']);
+
+Route::get('/signup', [UserController::class, 'showSignUpForm']);
+Route::post('/signup', [UserController::class, 'signup']);
